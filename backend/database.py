@@ -1,7 +1,7 @@
 import sqlite3
 
 def create_connection():
-    conn = sqlite3.connect("cyber_db.db")
+    conn = sqlite3.connect("./backend/cyber_db.db")
     cursor = conn.cursor()
     return conn, cursor
 def initialization():
@@ -99,11 +99,11 @@ def unique_IPs():
     polished = []
     conn, cursor = create_connection()
     cursor.execute("""
-SELECT DISTINCT ip 
-FROM domains 
-WHERE ip NOT LIKE '255.255.255.255'
-AND ip NOT LIKE '::1'
-""")
+        SELECT DISTINCT ip 
+        FROM domains 
+        WHERE ip NOT LIKE '255.255.255.255'
+        AND ip NOT LIKE '::1'
+        """)
     output = cursor.fetchall()
     conn.close()
     for i in output:
@@ -132,6 +132,16 @@ def add_vuln(title, description, severity, details, possible_fixes):
     cursor.execute("INSERT INTO vulnerabilities (title, description, severity, details, fixes) VALUES (?, ?, ?, ?, ?)", (title, description, severity, details, possible_fixes))
     conn.commit()
     conn.close()
+
+async def get_vulns():
+    conn, cursor = create_connection()
+    cursor.execute("SELECT * FROM vulnerabilities")
+    rows = cursor.fetchall()
+    conn.close()
+    dic = []
+    for row in rows:
+        dic.append({"title": row[0], "description": row[1], "severity": row[2], "details": row[3], "fixes": row[4]})
+    return dic
 
 initialization()
 

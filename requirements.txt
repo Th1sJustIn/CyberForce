@@ -1,3 +1,6 @@
 google-generativeai
 requests
-dotenv-python
+python-dotenv
+flask
+Flask[async]
+flask-cors
