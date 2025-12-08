@@ -1,7 +1,7 @@
 import sqlite3
 
 def create_connection():
-    conn = sqlite3.connect("./backend/cyber_db.db")
+    conn = sqlite3.connect("/Users/justinmarshall/Local Sites/CyberForce/backend/cyber_db.db")
     cursor = conn.cursor()
     return conn, cursor
 def initialization():
