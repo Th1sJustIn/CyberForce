@@ -81,11 +81,13 @@ def find_domains():
     add_domain_batch(pairs)
 
 
-
-try:
-    find_networks()
-    find_domains()
-except Exception as e:
-    print(e)
-finally:
-    find_ports()
+async def scan_assets():
+    try:
+        find_networks()
+        find_domains()
+    except Exception as e:
+        print(e)
+        return False
+    else:
+        find_ports()
+        return True
