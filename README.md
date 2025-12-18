@@ -158,12 +158,3 @@ The application uses SQLite with four tables:
 - Only scan hosts/networks you own or have explicit permission to test.
 - This repository is a learning/demo asset. Do not use it for unauthorized scanning.
 
-## License
-
-This project is provided without a license file. If you want it to be open-source, consider adding an appropriate `LICENSE` (for example MIT or Apache-2.0).
-
-## Contact
-
-Repository owner: `Th1sJustIn` (GitHub)
-
-If you'd like changes to this README or to add usage examples, tell me what you'd like and I can update it.
